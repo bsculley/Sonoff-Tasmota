@@ -81,6 +81,7 @@ const char HTTP_HEAD[] PROGMEM =
   "td{padding:0px;}"
   "button{border:0;border-radius:0.3rem;background-color:#1fa3ec;color:#fff;line-height:2.4rem;font-size:1.2rem;width:100%;-webkit-transition-duration:0.4s;transition-duration:0.4s;}"
   "button:hover{background-color:#006cba;}"
+  ".q{float:right;width:200px;text-align:right;}"
   "</style>"
 
   "</head>"
@@ -131,50 +132,44 @@ const char HTTP_SCRIPT_MODULE[] PROGMEM =
   "}"
   "function sl(){"
     "var o0=\"";
-const char HTTP_LNK_STYLE[] PROGMEM =
-  ".q{float:right;width:64px;text-align:right;}"
-  ".l{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAALVBMVEX///8EBwfBwsLw8PAzNjaCg4NTVVUjJiZDRUUUFxdiZGSho6O"
-  "Sk5Pg4eFydHTCjaf3AAAAZElEQVQ4je2NSw7AIAhEBamKn97/uMXEGBvozkWb9C2Zx4xzWykBhFAeYp9gkLyZE0zIMno9n4g19hmdY39scwqVkOXaxph0ZCXQcqxSpgQpONa59wkRDOL93eA"
-  "XvimwlbPbwwVAegLS1HGfZAAAAABJRU5ErkJggg==') no-repeat left center;background-size:1em;}"
-  "</style>";
 const char HTTP_MSG_RSTRT[] PROGMEM =
   "<br/><div style='text-align:center;'>Device will restart in a few seconds</div><br/>";
 const char HTTP_BTN_MENU1[] PROGMEM =
-  "<br/><form action='/cn' method='post'><button>Configuration</button></form>"
-  "<br/><form action='/in' method='post'><button>Information</button></form>"
-  "<br/><form action='/up' method='post'><button>Firmware upgrade</button></form>"
-  "<br/><form action='/cs' method='post'><button>Console</button></form>";
+  "<br/><form action='cn' method='get'><button>Configuration</button></form>"
+  "<br/><form action='in' method='get'><button>Information</button></form>"
+  "<br/><form action='up' method='get'><button>Firmware upgrade</button></form>"
+  "<br/><form action='cs' method='get'><button>Console</button></form>";
 const char HTTP_BTN_RSTRT[] PROGMEM =
-  "<br/><form action='/rb' method='post' onsubmit='return confirm(\"Confirm Restart\");'><button>Restart</button></form>";
+  "<br/><form action='rb' method='get' onsubmit='return confirm(\"Confirm Restart\");'><button>Restart</button></form>";
 const char HTTP_BTN_MENU2[] PROGMEM =
-  "<br/><form action='/md' method='post'><button>Configure Module</button></form>"
-  "<br/><form action='/w0' method='post'><button>Configure WiFi</button></form>";
+  "<br/><form action='md' method='get'><button>Configure Module</button></form>"
+  "<br/><form action='w0' method='get'><button>Configure WiFi</button></form>";
 const char HTTP_BTN_MENU3[] PROGMEM =
-  "<br/><form action='/mq' method='post'><button>Configure MQTT</button></form>"
+  "<br/><form action='mq' method='get'><button>Configure MQTT</button></form>"
 #ifdef USE_DOMOTICZ
-  "<br/><form action='/dm' method='post'><button>Configure Domoticz</button></form>"
+  "<br/><form action='dm' method='get'><button>Configure Domoticz</button></form>"
 #endif  // USE_DOMOTICZ
   "";
 const char HTTP_BTN_MENU4[] PROGMEM =
-  "<br/><form action='/lg' method='post'><button>Configure Logging</button></form>"
-  "<br/><form action='/co' method='post'><button>Configure Other</button></form>"
-  "<br/><form action='/rt' method='post' onsubmit='return confirm(\"Confirm Reset Configuration\");'><button>Reset Configuration</button></form>"
-  "<br/><form action='/dl' method='post'><button>Backup Configuration</button></form>"
-  "<br/><form action='/rs' method='post'><button>Restore Configuration</button></form>";
+  "<br/><form action='lg' method='get'><button>Configure Logging</button></form>"
+  "<br/><form action='co' method='get'><button>Configure Other</button></form>"
+  "<br/><form action='rt' method='get' onsubmit='return confirm(\"Confirm Reset Configuration\");'><button>Reset Configuration</button></form>"
+  "<br/><form action='dl' method='get'><button>Backup Configuration</button></form>"
+  "<br/><form action='rs' method='get'><button>Restore Configuration</button></form>";
 const char HTTP_BTN_MAIN[] PROGMEM =
-  "<br/><br/><form action='/' method='post'><button>Main menu</button></form>";
+  "<br/><br/><form action='.' method='get'><button>Main menu</button></form>";
 const char HTTP_BTN_CONF[] PROGMEM =
-  "<br/><br/><form action='/cn' method='post'><button>Configuration menu</button></form>";
+  "<br/><br/><form action='cn' method='get'><button>Configuration menu</button></form>";
 const char HTTP_FORM_MODULE[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;Module parameters&nbsp;</b></legend><form method='post' action='sv'>"
+  "<fieldset><legend><b>&nbsp;Module parameters&nbsp;</b></legend><form method='get' action='sv'>"
   "<input id='w' name='w' value='6' hidden><input id='r' name='r' value='1' hidden>"
   "<br/><b>Module type</b> ({mt})<br/><select id='mt' name='mt'>";
 const char HTTP_LNK_ITEM[] PROGMEM =
-  "<div><a href='#p' onclick='c(this)'>{v}</a>&nbsp;<span class='q {i}'>{r}%</span></div>";
+  "<div><a href='#p' onclick='c(this)'>{v}</a>&nbsp;<span class='q'>{i} {r}%</span></div>";
 const char HTTP_LNK_SCAN[] PROGMEM =
   "<div><a href='/w1'>Scan for wifi networks</a></div><br/>";
 const char HTTP_FORM_WIFI[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;Wifi parameters&nbsp;</b></legend><form method='post' action='sv'>"
+  "<fieldset><legend><b>&nbsp;Wifi parameters&nbsp;</b></legend><form method='get' action='sv'>"
   "<input id='w' name='w' value='1' hidden><input id='r' name='r' value='1' hidden>"
   "<br/><b>AP1 SSId</b> (" STA_SSID1 ")<br/><input id='s1' name='s1' length=32 placeholder='" STA_SSID1 "' value='{s1}'><br/>"
   "<br/><b>AP1 Password</b></br><input id='p1' name='p1' length=64 type='password' placeholder='" STA_PASS1 "' value='{p1}'><br/>"
@@ -182,7 +177,7 @@ const char HTTP_FORM_WIFI[] PROGMEM =
   "<br/><b>AP2 Password</b></br><input id='p2' name='p2' length=64 type='password' placeholder='" STA_PASS2 "' value='{p2}'><br/>"
   "<br/><b>Hostname</b> (" WIFI_HOSTNAME ")<br/><input id='h' name='h' length=32 placeholder='" WIFI_HOSTNAME" ' value='{h1}'><br/>";
 const char HTTP_FORM_MQTT[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;MQTT parameters&nbsp;</b></legend><form method='post' action='sv'>"
+  "<fieldset><legend><b>&nbsp;MQTT parameters&nbsp;</b></legend><form method='get' action='sv'>"
   "<input id='w' name='w' value='2' hidden><input id='r' name='r' value='1' hidden>"
   "<br/><b>Host</b> (" MQTT_HOST ")<br/><input id='mh' name='mh' length=32 placeholder='" MQTT_HOST" ' value='{m1}'><br/>"
   "<br/><b>Port</b> (" STR(MQTT_PORT) ")<br/><input id='ml' name='ml' length=5 placeholder='" STR(MQTT_PORT) "' value='{m2}'><br/>"
@@ -192,7 +187,7 @@ const char HTTP_FORM_MQTT[] PROGMEM =
   "<br/><b>Topic</b> = %topic% (" MQTT_TOPIC ")<br/><input id='mt' name='mt' length=32 placeholder='" MQTT_TOPIC" ' value='{m6}'><br/>"
   "<br/><b>Full Topic</b> (" MQTT_FULLTOPIC ")<br/><input id='mf' name='mf' length=80 placeholder='" MQTT_FULLTOPIC" ' value='{m7}'><br/>";
 const char HTTP_FORM_LOG1[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;Logging parameters&nbsp;</b></legend><form method='post' action='sv'>"
+  "<fieldset><legend><b>&nbsp;Logging parameters&nbsp;</b></legend><form method='get' action='sv'>"
   "<input id='w' name='w' value='3' hidden><input id='r' name='r' value='0' hidden>";
 const char HTTP_FORM_LOG2[] PROGMEM =
   "<br/><b>{b0}log level</b> ({b1})<br/><select id='{b2}' name='{b2}'>"
@@ -207,18 +202,17 @@ const char HTTP_FORM_LOG3[] PROGMEM =
   "<br/><b>Syslog port</b> (" STR(SYS_LOG_PORT) ")<br/><input id='lp' name='lp' length=5 placeholder='" STR(SYS_LOG_PORT) "' value='{l3}'><br/>"
   "<br/><b>Telemetric period</b> (" STR(TELE_PERIOD) ")<br/><input id='lt' name='lt' length=4 placeholder='" STR(TELE_PERIOD) "' value='{l4}'><br/>";
 const char HTTP_FORM_OTHER[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;Other parameters&nbsp;</b></legend><form method='post' action='sv'>"
+  "<fieldset><legend><b>&nbsp;Other parameters&nbsp;</b></legend><form method='get' action='sv'>"
   "<input id='w' name='w' value='5' hidden><input id='r' name='r' value='1' hidden>"
   "<br/><b>Web Admin Password</b><br/><input id='p1' name='p1' length=32 type='password' placeholder='" WEB_PASSWORD "' value='{p1}'><br/>"
   "<br/><input style='width:10%;float:left' id='b1' name='b1' type='checkbox'{r1}><b>MQTT enable</b><br/>";
 const char HTTP_FORM_OTHER2[] PROGMEM =
   "<br/><b>Friendly Name {1</b> ({2)<br/><input id='a{1' name='a{1' length=32 placeholder='{2' value='{3'><br/>";
 #ifdef USE_EMULATION
-const char HTTP_FORM_OTHER3[] PROGMEM =
-  "<br/><fieldset><legend><b>&nbsp;Emulation&nbsp;</b></legend>"
-  "<br/><input style='width:10%;float:left' id='b2' name='b2' type='radio' value='0'{r2}><b>None</b>"
-  "<br/><input style='width:10%;float:left' id='b2' name='b2' type='radio' value='1'{r3}><b>Belkin WeMo</b> single device"
-  "<br/><input style='width:10%;float:left' id='b2' name='b2' type='radio' value='2'{r4}><b>Hue Bridge</b> multi devices<br/>";
+const char HTTP_FORM_OTHER3a[] PROGMEM =
+  "<br/><fieldset><legend><b>&nbsp;Emulation&nbsp;</b></legend>";
+const char HTTP_FORM_OTHER3b[] PROGMEM =
+  "<br/><input style='width:10%;float:left' id='b2' name='b2' type='radio' value='{1'{2><b>{3</b>{4";
 #endif  // USE_EMULATION
 const char HTTP_FORM_END[] PROGMEM =
   "<br/><button type='submit'>Save</button></form></fieldset>";
@@ -228,7 +222,7 @@ const char HTTP_FORM_RST[] PROGMEM =
 const char HTTP_FORM_UPG[] PROGMEM =
   "<div id='f1' name='f1' style='display:block;'>"
   "<fieldset><legend><b>&nbsp;Upgrade by web server&nbsp;</b></legend>"
-  "<form method='post' action='u1'>"
+  "<form method='get' action='u1'>"
   "<br/>OTA Url<br/><input id='o' name='o' length=80 placeholder='OTA_URL' value='{o1}'><br/>"
   "<br/><button type='submit'>Start upgrade</button></form>"
   "</fieldset><br/><br/>"
@@ -458,6 +452,7 @@ void handleAjax2()
   }
   
   String tpage = "";
+  tpage += counter_webPresent();
   if (hlw_flg) {
     tpage += hlw_webPresent();
   }
@@ -667,7 +662,6 @@ void handleWifi(boolean scan)
 
   String page = FPSTR(HTTP_HEAD);
   page.replace(F("{v}"), F("Configure Wifi"));
-  page.replace(F("</style>"), FPSTR(HTTP_LNK_STYLE));
 
   if (scan) {
 #ifdef USE_EMULATION
@@ -728,11 +722,8 @@ void handleWifi(boolean scan)
           rssiQ += quality;
           item.replace(F("{v}"), WiFi.SSID(indices[i]));
           item.replace(F("{r}"), rssiQ);
-          if (WiFi.encryptionType(indices[i]) != ENC_TYPE_NONE) {
-            item.replace(F("{i}"), F("l"));
-          } else {
-            item.replace(F("{i}"), "");
-          }
+          uint8_t auth = WiFi.encryptionType(indices[i]);
+          item.replace(F("{i}"), (ENC_TYPE_WEP == auth) ? F("WEP") : (ENC_TYPE_TKIP == auth) ? F("WPA PSK") : (ENC_TYPE_CCMP == auth) ? F("WPA2 PSK") : (ENC_TYPE_AUTO == auth) ? F("AUTO") : F(""));
           page += item;
           delay(0);
         } else {
@@ -852,10 +843,15 @@ void handleOther()
   page.replace(F("{2"), FRIENDLY_NAME);
   page.replace(F("{3"), sysCfg.friendlyname[0]);
 #ifdef USE_EMULATION
-  page += FPSTR(HTTP_FORM_OTHER3);
-  page.replace(F("{r2}"), (EMUL_NONE == sysCfg.flag.emulation) ? F(" checked") : F(""));
-  page.replace(F("{r3}"), (EMUL_WEMO == sysCfg.flag.emulation) ? F(" checked") : F(""));
-  page.replace(F("{r4}"), (EMUL_HUE == sysCfg.flag.emulation) ? F(" checked") : F(""));
+  page += FPSTR(HTTP_FORM_OTHER3a);
+  for (byte i = 0; i < EMUL_MAX; i++) {
+    page += FPSTR(HTTP_FORM_OTHER3b);
+    page.replace(F("{1"), String(i));
+    page.replace(F("{2"), (i == sysCfg.flag.emulation) ? F(" checked") : F(""));
+    page.replace(F("{3"), (i == EMUL_NONE) ? F("None") : (i == EMUL_WEMO) ? F("Belkin WeMo") : F("Hue Bridge"));
+    page.replace(F("{4"), (i == EMUL_NONE) ? F("") : (i == EMUL_WEMO) ? F(" single device") : F(" multi devices"));
+  }
+  page += F("<br/>");
   for (int i = 1; i < Maxdevice; i++) {
     page += FPSTR(HTTP_FORM_OTHER2);
     page.replace(F("{1"), String(i +1));
@@ -933,7 +929,9 @@ void handleSave()
     break;
   case 2:
     strlcpy(stemp, (!strlen(webServer->arg("mt").c_str())) ? MQTT_TOPIC : webServer->arg("mt").c_str(), sizeof(stemp));
+    mqttfy(0, stemp);
     strlcpy(stemp2, (!strlen(webServer->arg("mf").c_str())) ? MQTT_FULLTOPIC : webServer->arg("mf").c_str(), sizeof(stemp2));
+    mqttfy(1,stemp2);
     if ((strcmp(stemp, sysCfg.mqtt_topic)) || (strcmp(stemp2, sysCfg.mqtt_fulltopic))) {
       mqtt_publish_topic_P(2, PSTR("LWT"), (sysCfg.flag.mqtt_offline) ? "Offline" : "", true);  // Offline or remove previous retained topic
     }
@@ -1132,24 +1130,21 @@ void handleUploadDone()
     page += F("<font color='red'>failed</font></b><br/><br/>");
     switch (_uploaderror) {
       case 1: strcpy_P(error, PSTR("No file selected")); break;
-      case 2: strcpy_P(error, PSTR("File size is larger than available free space")); break;
-      case 3: strcpy_P(error, PSTR("File magic header does not start with 0xE9")); break;
-      case 4: strcpy_P(error, PSTR("File flash size is larger than device flash size")); break;
-      case 5: strcpy_P(error, PSTR("File upload buffer miscompare")); break;
-      case 6: strcpy_P(error, PSTR("Upload failed. Enable logging option 3 for more information")); break;
+      case 2: strcpy_P(error, PSTR("Not enough space")); break;
+      case 3: strcpy_P(error, PSTR("Magic byte is not 0xE9")); break;
+      case 4: strcpy_P(error, PSTR("IDE flash size larger than device flash size")); break;
+      case 5: strcpy_P(error, PSTR("Upload buffer miscompare")); break;
+      case 6: strcpy_P(error, PSTR("Upload failed. Enable logging 3")); break;
       case 7: strcpy_P(error, PSTR("Upload aborted")); break;
-      case 8: strcpy_P(error, PSTR("Invalid configuration file")); break;
-      case 9: strcpy_P(error, PSTR("Configuration file too large")); break;
+      case 8: strcpy_P(error, PSTR("File invalid")); break;
+      case 9: strcpy_P(error, PSTR("File too large")); break;
       default:
         snprintf_P(error, sizeof(error), PSTR("Upload error code %d"), _uploaderror);
     }
     page += error;
-    if (!_uploadfiletype && Update.hasError()) {
-      page += F("<br/><br/>Update error code (see Updater.cpp) ");
-      page += String(Update.getError());
-    }
-    snprintf_P(log, sizeof(log), PSTR("Upload: Error - %s"), error);
+    snprintf_P(log, sizeof(log), PSTR("Upload: %s"), error);
     addLog(LOG_LEVEL_DEBUG, log);
+    stop_flash_rotate = sysCfg.flag.stop_flash_rotate;
   } else {
     page += F("<font color='green'>successful</font></b><br/><br/>Device will restart in a few seconds");
     restartflag = 2;
@@ -1183,6 +1178,7 @@ void handleUploadLoop()
       _uploaderror = 1;
       return;
     }
+    CFG_Save(1);  // Free flash for upload
     snprintf_P(log, sizeof(log), PSTR("Upload: File %s ..."), upload.filename.c_str());
     addLog(LOG_LEVEL_INFO, log);
     if (!_uploadfiletype) {
@@ -1195,9 +1191,6 @@ void handleUploadLoop()
       }
       uint32_t maxSketchSpace = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
       if (!Update.begin(maxSketchSpace)) {         //start with max available size
-        if (_serialoutput) {
-          Update.printError(Serial);
-        }
         _uploaderror = 2;
         return;
       }
@@ -1240,12 +1233,10 @@ void handleUploadLoop()
         }
         CFG_DefaultSet2();
         memcpy((char*)&sysCfg +16, upload.buf +16, upload.currentSize -16);
+        memcpy((char*)&sysCfg +8, upload.buf +8, 4);  // Restore version and auto upgrade
       }
     } else {  // firmware
       if (!_uploaderror && (Update.write(upload.buf, upload.currentSize) != upload.currentSize)) {
-        if (_serialoutput) {
-          Update.printError(Serial);
-        }
         _uploaderror = 5;
         return;
       }
@@ -1438,7 +1429,8 @@ void handleInfo()
   page += F("<tr><th>Core/SDK version</th><td>"); page += ESP.getCoreVersion(); page += F("/"); page += String(ESP.getSdkVersion()); page += F("</td></tr>");
 //  page += F("<tr><th>Boot version</th><td>"); page += String(ESP.getBootVersion()); page += F("</td></tr>");
   page += F("<tr><th>Uptime</th><td>"); page += String(uptime); page += F(" Hours</td></tr>");
-  page += F("<tr><th>Flash write count</th><td>"); page += String(sysCfg.saveFlag); page += F("</td></tr>");
+  snprintf_P(stopic, sizeof(stopic), PSTR(" at %X"), CFG_Address());
+  page += F("<tr><th>Flash write count</th><td>"); page += String(sysCfg.saveFlag); page += stopic; page += F("</td></tr>");
   page += F("<tr><th>Boot count</th><td>"); page += String(sysCfg.bootcount); page += F("</td></tr>");
   page += F("<tr><th>Reset reason</th><td>"); page += getResetReason(); page += F("</td></tr>");
   for (byte i = 0; i < Maxdevice; i++) {

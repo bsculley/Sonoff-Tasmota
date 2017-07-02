@@ -302,18 +302,18 @@ const char HUE_LIGHT_STATUS_JSON[] PROGMEM =
       "\"bri\":{b},"
       "\"hue\":{h},"
       "\"sat\":{s},"
-      "\"effect\":\"none\","
-      "\"ct\":0,"
+      "\"ct\":500,"
+      "\"xy\":[0.5, 0.5],"
       "\"alert\":\"none\","
+      "\"effect\":\"none\","
       "\"colormode\":\"hs\","
       "\"reachable\":true"
   "},"
-  "\"type\":\"Dimmable light\","
+  "\"type\":\"Extended color light\","
   "\"name\":\"{j1}\","
-  "\"modelid\":\"LWB004\","
-  "\"manufacturername\":\"Philips\","
+  "\"modelid\":\"LCT007\","
   "\"uniqueid\":\"{j2}\","
-  "\"swversion\":\"66012040\""
+  "\"swversion\":\"5.50.1.19085\""
   "}";
 const char HUE_LIGHT_RESPONSE_JSON[] PROGMEM =
   "{\"success\":{\"{api}/{id}/{cmd}\":{res}}}";
@@ -346,10 +346,12 @@ void handleUPnPevent()
 
   String request = webServer->arg(0);
   if (request.indexOf("State>1</Binary") > 0) {
-    do_cmnd_power(1, 1);
+//    do_cmnd_power(1, 1);
+    do_cmnd_power(Maxdevice, 1);
   }
   if (request.indexOf("State>0</Binary") > 0) {
-    do_cmnd_power(1, 0);
+//    do_cmnd_power(1, 0);
+    do_cmnd_power(Maxdevice, 0);
   }
   webServer->send(200, F("text/plain"), "");
 }
